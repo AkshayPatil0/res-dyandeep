@@ -1,0 +1,124 @@
+---
+const navLinks = [
+  { href: "/", text: "Home" },
+  { href: "/cbse-disclosures", text: "CBSE Mandatory Disclosures" },
+  { href: "/about", text: "About Us" },
+  { href: "/contact", text: "Contact Us" },
+];
+---
+
+<!-- Header and Navigation Bar -->
+<header class="bg-white w-full">
+  <!-- School Logo and Name -->
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4 p-4">
+    <img src="/images/logo.png" alt="School Logo" class="size-32 mr-3" />
+    <div class="text-center flex flex-col">
+      <span
+        class="text-md md:text-xl font-bold text-primary transition duration-300"
+        >Radhanand Educations Society's
+      </span>
+      <h1
+        class="text-2xl md:text-4xl font-bold text-primary transition duration-300"
+      >
+        Dyandeep Vidyalaya, Mangsuli
+      </h1>
+      <span class="text-sm md:text-lg font-bold pt-2 text-gray-600">
+        Taluka: Belgum &nbsp; &nbsp; Dist: Athani
+      </span>
+    </div>
+  </div>
+</header>
+
+<nav
+  class="sticky bg-gray-800 top-0 z-50 shadow-md w-full px-6 py-4 flex items-center justify-center"
+>
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden">
+    <button
+      id="mobile-menu-button"
+      class="text-gray-600 focus:outline-none focus:text-gray-900"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Desktop Navigation Links -->
+  <div class="hidden md:flex space-x-8">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "text-white hover:text-yellow-500 hover:underline underline-offset-6 font-bold transition duration-300 [&.active]:text-yellow-500 [&.active]:underline",
+            link.href === Astro.url.pathname ? "active" : "",
+          ]}
+        >
+          {link.text}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<!-- Mobile Menu (hidden by default) -->
+<div id="mobile-menu" class="md:hidden hidden bg-white py-2 shadow-inner">
+  <a
+    href="#home"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >Home</a
+  >
+  <a
+    href="#about"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >About Us</a
+  >
+  <a
+    href="#academics"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >Academics</a
+  >
+  <a
+    href="#admissions"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >Admissions</a
+  >
+  <a
+    href="#gallery"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >Gallery</a
+  >
+  <a
+    href="#contact"
+    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
+    >Contact Us</a
+  >
+</div>
+
+<script>
+  document
+    .getElementById("mobile-menu-button")
+    ?.addEventListener("click", function () {
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenu?.classList.toggle("hidden");
+    });
+
+  // Close mobile menu when a link is clicked
+  const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      document.getElementById("mobile-menu")?.classList.add("hidden");
+    });
+  });
+</script>

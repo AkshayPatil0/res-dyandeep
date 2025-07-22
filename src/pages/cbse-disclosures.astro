@@ -1,0 +1,159 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const disclosures: Array<{
+  id: number;
+  title: string;
+  action: Array<{ type: string; link: string | null }>;
+}> = [
+  {
+    id: 1,
+    title: "TRUST REGISTRATION",
+    action: [{ type: "pdf", link: "test" }],
+  },
+  { id: 2, title: "NOC", action: [{ type: "pdf", link: "test" }] },
+  {
+    id: 3,
+    title: "RECOGNITION CERTIFICATE",
+    action: [{ type: "pdf", link: "test" }],
+  },
+  {
+    id: 4,
+    title: "BUILDING SAFETY CERTIFICATE",
+    action: [{ type: "pdf", link: "test" }],
+  },
+  {
+    id: 5,
+    title: "FIRE SAFETY CERTIFICATE",
+    action: [{ type: "pdf", link: "test" }],
+  },
+  {
+    id: 6,
+    title: "WATER HEALTH & SANITARY CERTIFICATE",
+    action: [{ type: "pdf", link: "test" }],
+  },
+  {
+    id: 7,
+    title: "FEE STRUCTURE OF THE SCHOOL",
+    action: [{ type: "pdf", link: null }],
+  },
+  {
+    id: 8,
+    title: "ANNUAL ACADEMIC CALENDAR",
+    action: [{ type: "pdf", link: null }],
+  },
+  { id: 9, title: "SMC", action: [{ type: "pdf", link: null }] },
+  { id: 10, title: "PTA", action: [{ type: "pdf", link: null }] },
+  { id: 11, title: "RTE", action: [{ type: "pdf", link: null }] },
+  { id: 12, title: "TEACHING STAFF", action: [{ type: "pdf", link: null }] },
+  {
+    id: 13,
+    title: "CERTIFICATE OF LAND",
+    action: [{ type: "pdf", link: null }],
+  },
+  { id: 14, title: "SELF CERTIFICATE", action: [{ type: "pdf", link: null }] },
+  {
+    id: 15,
+    title: "LIBRARY",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+  {
+    id: 16,
+    title: "SCHOOL COMPOUND",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+  {
+    id: 17,
+    title: "CSWN – BO",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+  {
+    id: 18,
+    title: "SCIENCE LAB",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+  {
+    id: 19,
+    title: "SCHOOL ENTRY VIEW & CLASS ROOMS",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+  {
+    id: 20,
+    title: "COMPUTER LAB",
+    action: [
+      { type: "pdf", link: null },
+      { type: "video", link: null },
+    ],
+  },
+];
+
+const getActionText = (action: { type: string; link: string | null }) => {
+  if (action.link === null) {
+    return action.type === "video"
+      ? "Video not Available"
+      : "Document not Available";
+  }
+  return action.type === "pdf" ? "Download PDF" : "Watch Video";
+};
+
+const getActionTextSm = (action: { type: string; link: string | null }) => {
+  return action.type === "pdf" ? "PDF" : "Video";
+};
+---
+
+<Layout>
+  <!-- CBSE Mandatory Disclosures Section -->
+  <section id="cbse-disclosures" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
+        CBSE Mandatory Disclosures
+      </h2>
+
+      <div class="">
+        <!-- Table Rows -->
+        <div class="flex flex-col gap-2 max-w-4xl mx-auto">
+          {
+            disclosures.map((item) => (
+              <div class="grid grid-cols-[24px_minmax(0,_1fr)_96px] md:grid-cols-[24px_repeat(2,_minmax(0,_1fr))] gap-4 p-4 md:py-6 md:px-8 hover:bg-gray-50 transition duration-200 bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="col-span-1 text-gray-800">{item.id}.</div>
+                <div class="col-span-1 text-gray-800">{item.title}</div>
+                <div class="col-span-1">
+                  {item.action.map((action, index) => (
+                    <span
+                      class={`${
+                        action.link === null
+                          ? "text-gray-500"
+                          : "text-blue-600 underline-offset-2 hover:underline font-medium cursor-pointer"
+                      }`}
+                    >
+                      {index > 0 ? " | " : ""}
+                      <span class="hidden md:inline">
+                        {getActionText(action)}
+                      </span>
+                      <span class="md:hidden">{getActionTextSm(action)}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

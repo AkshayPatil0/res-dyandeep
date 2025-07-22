@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const values = [
+  {
+    title: "Excellence",
+    description:
+      "Striving for the highest standards in all academic and extracurricular endeavors.",
+  },
+  {
+    title: "Integrity",
+    description:
+      "Upholding honesty, respect, and ethical conduct in all interactions.",
+  },
+  {
+    title: "Innovation",
+    description:
+      "Fostering creativity, critical thinking, and embracing new ideas for problem-solving.",
+  },
+  {
+    title: "Community",
+    description:
+      "Building a supportive, inclusive, and collaborative environment for all.",
+  },
+  {
+    title: "Responsibility",
+    description: "Encouraging accountability, empathy, and global citizenship.",
+  },
+];
+---
+
+<Layout>
+  <!-- About Us Section -->
+  <section id="about" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
+        About Our School
+      </h2>
+      <div
+        class="flex flex-col md:flex-row items-center justify-center md:space-x-12"
+      >
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img
+            src="https://placehold.co/600x400/E0E0E0/333333?text=School+Campus"
+            alt="School Campus"
+            class="rounded-lg shadow-xl w-full h-auto"
+          />
+        </div>
+        <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
+          <p class="mb-4">
+            Your School Name is dedicated to providing a holistic educational
+            experience that fosters academic excellence, personal growth, and
+            social responsibility. Established in [Year], we have been a beacon
+            of learning, guiding students to reach their full potential.
+          </p>
+          <p class="mb-4">
+            Our mission is to create a dynamic and supportive learning
+            environment where students are encouraged to explore, innovate, and
+            develop a lifelong love for learning. We believe in nurturing
+            critical thinking, creativity, and strong ethical values.
+          </p>
+          <p>
+            With a team of highly qualified and passionate educators,
+            state-of-the-art facilities, and a comprehensive curriculum, we
+            prepare our students to thrive in a rapidly changing world.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
+        Our Core Values
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {
+          values.map((value) => (
+            <div class="bg-blue-50 px-6 py-12 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+              <h4 class="text-2xl font-semibold text-primary mb-4 text-center">
+                {value.title}
+              </h4>
+              <p class="text-gray-700 text-center">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
+        Our School Gallery
+      </h2>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        <!-- Gallery Item 1 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Event+1"
+            alt="School Event 1"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Annual Sports Day</p>
+          </div>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Classroom"
+            alt="Classroom"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Modern Classrooms</p>
+          </div>
+        </div>
+        <!-- Gallery Item 3 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Lab"
+            alt="Science Lab"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Science Laboratory</p>
+          </div>
+        </div>
+        <!-- Gallery Item 4 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Library"
+            alt="Library"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Well-Stocked Library</p>
+          </div>
+        </div>
+        <!-- Gallery Item 5 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Playground"
+            alt="Playground"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Spacious Playground</p>
+          </div>
+        </div>
+        <!-- Gallery Item 6 -->
+        <div
+          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="https://placehold.co/400x300/C0C0C0/333333?text=Students"
+            alt="Students"
+            class="w-full h-48 object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="text-white text-lg font-semibold">Engaged Students</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

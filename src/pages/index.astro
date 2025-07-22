@@ -1,11 +1,139 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <!-- Hero Section -->
+  <section
+    id="home"
+    style="background-image: url('/images/hero1.jpeg');"
+    class="bg-cover bg-center bg-no-repeat relative h-screen flex items-center justify-center text-white text-center pt-16"
+  >
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <div class="relative z-10 px-6">
+      <h1
+        class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up"
+      >
+        Nurturing Minds, Building Futures
+      </h1>
+      <p
+        class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200"
+      >
+        Empowering students with knowledge, skills, and values for a brighter
+        tomorrow.
+      </p>
+      <a
+        href="#admissions"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-fade-in-up delay-400"
+      >
+        Admissions Open!
+      </a>
+    </div>
+  </section>
+
+  <!-- Academics Section -->
+  <section id="academics" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
+        Our Academic Programs
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Program Card 1 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
+        >
+          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
+            Primary Education (Grades 1-5)
+          </h3>
+          <p class="text-gray-700 mb-4">
+            Our primary curriculum focuses on foundational literacy, numeracy,
+            and environmental studies, fostering curiosity and a love for
+            learning through interactive methods.
+          </p>
+          <a href="#" class="text-blue-500 hover:underline font-medium"
+            >Learn More &rarr;</a
+          >
+        </div>
+        <!-- Program Card 2 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
+        >
+          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
+            Middle School (Grades 6-8)
+          </h3>
+          <p class="text-gray-700 mb-4">
+            We emphasize critical thinking and problem-solving skills,
+            introducing specialized subjects and encouraging independent
+            learning.
+          </p>
+          <a href="#" class="text-blue-500 hover:underline font-medium"
+            >Learn More &rarr;</a
+          >
+        </div>
+        <!-- Program Card 3 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
+        >
+          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
+            High School (Grades 9-12)
+          </h3>
+          <p class="text-gray-700 mb-4">
+            A rigorous curriculum prepares students for higher education,
+            offering diverse subjects and career guidance.
+          </p>
+          <a href="#" class="text-blue-500 hover:underline font-medium"
+            >Learn More &rarr;</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admissions Section -->
+  <section id="admissions" class="py-16 bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-blue-700 mb-8">Admissions</h2>
+      <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
+        Discover the path to joining our vibrant learning community. We welcome
+        students who are eager to learn, grow, and contribute positively.
+      </p>
+      <div
+        class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8"
+      >
+        <div class="bg-blue-100 p-8 rounded-lg shadow-md w-full md:w-1/3">
+          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
+            Admission Process
+          </h3>
+          <p class="text-gray-700 mb-6">
+            Learn about our step-by-step admission procedure, including
+            eligibility criteria and required documents.
+          </p>
+          <a
+            href="#"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+          >
+            View Process
+          </a>
+        </div>
+        <div class="bg-green-100 p-8 rounded-lg shadow-md w-full md:w-1/3">
+          <h3 class="text-2xl font-semibold text-green-600 mb-4">
+            Apply Online
+          </h3>
+          <p class="text-gray-700 mb-6">
+            Start your application today through our secure online portal. It's
+            quick, easy, and convenient.
+          </p>
+          <a
+            href="#"
+            class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+          >
+            Apply Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
