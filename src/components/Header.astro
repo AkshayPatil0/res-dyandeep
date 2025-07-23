@@ -23,17 +23,33 @@ const navLinks = [
         Dyandeep Vidyalaya, Mangsuli
       </h1>
       <span class="text-sm md:text-lg font-bold pt-2 text-gray-600">
-        Taluka: Belgum &nbsp; &nbsp; Dist: Athani
+        Taluka: Kagwad &nbsp; &nbsp; Dist: Belgavi
       </span>
     </div>
   </div>
 </header>
 
-<nav
-  class="sticky bg-gray-800 top-0 z-50 shadow-md w-full px-6 py-4 flex items-center justify-center"
->
+<nav class="sticky bg-gray-800 top-0 z-50 shadow-md w-full px-6 py-4">
+  <!-- Desktop Navigation Links -->
+  <div class="hidden md:flex space-x-8">
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "text-white hover:text-yellow-500 hover:underline underline-offset-6 font-bold transition duration-300 [&.active]:text-yellow-500 [&.active]:underline",
+            link.href === Astro.url.pathname ? "active" : "",
+          ]}
+        >
+          {link.text}
+        </a>
+      ))
+    }
+  </div>
+
+  <!-- Mobile Menu (hidden by default) -->
   <!-- Mobile Menu Button -->
-  <div class="md:hidden">
+  <div class="md:hidden h-6 flex items-center justify-center">
     <button
       id="mobile-menu-button"
       class="text-gray-600 focus:outline-none focus:text-gray-900"
@@ -54,14 +70,13 @@ const navLinks = [
     </button>
   </div>
 
-  <!-- Desktop Navigation Links -->
-  <div class="hidden md:flex space-x-8">
+  <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2 shadow-inner">
     {
       navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "text-white hover:text-yellow-500 hover:underline underline-offset-6 font-bold transition duration-300 [&.active]:text-yellow-500 [&.active]:underline",
+            "block px-6 py-2 text-white hover:text-yellow-500 hover:underline underline-offset-6 font-medium transition duration-300 [&.active]:text-yellow-500 [&.active]:underline",
             link.href === Astro.url.pathname ? "active" : "",
           ]}
         >
@@ -71,40 +86,6 @@ const navLinks = [
     }
   </div>
 </nav>
-
-<!-- Mobile Menu (hidden by default) -->
-<div id="mobile-menu" class="md:hidden hidden bg-white py-2 shadow-inner">
-  <a
-    href="#home"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >Home</a
-  >
-  <a
-    href="#about"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >About Us</a
-  >
-  <a
-    href="#academics"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >Academics</a
-  >
-  <a
-    href="#admissions"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >Admissions</a
-  >
-  <a
-    href="#gallery"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >Gallery</a
-  >
-  <a
-    href="#contact"
-    class="block px-6 py-2 text-gray-700 hover:bg-gray-100 transition duration-200"
-    >Contact Us</a
-  >
-</div>
 
 <script>
   document
