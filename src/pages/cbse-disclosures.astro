@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getDisclosuresFromSheet } from "../utils/disclosures";
 
-// Fetch disclosures directly from Google Sheet (or environment URL/ID)
+// Fetch initial disclosures server-side / pre-rendered at build time
 const disclosures = await getDisclosuresFromSheet();
 
 const getActionText = (action: { type: string; link: string | null }) => {
@@ -38,7 +38,8 @@ const getActionText = (action: { type: string; link: string | null }) => {
         {
           disclosures.map((item) => (
             <div
-              class="bg-white rounded-xl shadow-xs border border-slate-200 p-4 md:py-5 md:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-blue-300 transition duration-200"
+              data-disclosure-id={item.id}
+              class="disclosure-card bg-white rounded-xl shadow-xs border border-slate-200 p-4 md:py-5 md:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-blue-300 transition duration-200"
             >
               
               <!-- Left: ID & Title -->
@@ -46,23 +47,23 @@ const getActionText = (action: { type: string; link: string | null }) => {
                 <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 text-blue-700 font-bold text-sm flex items-center justify-center border border-blue-100">
                   {item.id}
                 </span>
-                <h3 class="font-semibold text-slate-800 text-base md:text-lg leading-snug">
+                <h3 class="disclosure-title font-semibold text-slate-800 text-base md:text-lg leading-snug">
                   {item.title}
                 </h3>
               </div>
 
               <!-- Right: Actions -->
-              <div class="flex items-center gap-2 flex-wrap self-end md:self-center">
+              <div class="disclosure-actions flex items-center gap-2 flex-wrap self-end md:self-center">
                 {item.action.map((action) => (
                   action.link ? (
                     <a
                       href={action.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 ${
+                      class={`action-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 shadow-xs ${
                         action.type === 'pdf'
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
-                          : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                          : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                       }`}
                     >
                       {action.type === 'pdf' ? (
@@ -78,7 +79,7 @@ const getActionText = (action: { type: string; link: string | null }) => {
                       <span>{getActionText(action)}</span>
                     </a>
                   ) : (
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                    <span class="action-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
                       {getActionText(action)}
                     </span>
                   )
@@ -93,3 +94,67 @@ const getActionText = (action: { type: string; link: string | null }) => {
     </div>
   </section>
 </Layout>
+
+<script>
+  import { getDisclosuresFromSheet } from "../utils/disclosures";
+
+  // Client-side live sync script for production
+  async function refreshDisclosuresLive() {
+    try {
+      const items = await getDisclosuresFromSheet();
+      if (!items || items.length === 0) return;
+
+      items.forEach((item) => {
+        const card = document.querySelector(`[data-disclosure-id="${item.id}"]`);
+        if (!card) return;
+
+        // Update Title
+        const titleEl = card.querySelector(".disclosure-title");
+        if (titleEl && item.title) {
+          titleEl.textContent = item.title;
+        }
+
+        // Update Action Buttons
+        const actionsContainer = card.querySelector(".disclosure-actions");
+        if (actionsContainer && Array.isArray(item.action)) {
+          let html = "";
+          item.action.forEach((act) => {
+            if (act.link) {
+              const isPdf = act.type === "pdf";
+              const btnClass = isPdf ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-emerald-600 hover:bg-emerald-700 text-white";
+              const label = isPdf ? "View / Download PDF" : "Watch Video";
+              const icon = isPdf
+                ? `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`
+                : `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+
+              html += `
+                <a
+                  href="${act.link}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="action-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 ${btnClass} shadow-xs"
+                >
+                  ${icon}
+                  <span>${label}</span>
+                </a>
+              `;
+            } else {
+              const label = act.type === "video" ? "Video Not Available" : "Document Not Available";
+              html += `
+                <span class="action-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                  ${label}
+                </span>
+              `;
+            }
+          });
+          actionsContainer.innerHTML = html;
+        }
+      });
+    } catch (err) {
+      console.warn("Client live sync error:", err);
+    }
+  }
+
+  // Run client-side live sync immediately when page opens
+  refreshDisclosuresLive();
+</script>
