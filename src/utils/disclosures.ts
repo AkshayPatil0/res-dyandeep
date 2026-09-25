@@ -158,14 +158,17 @@ export function formatDriveLink(url: string | null): string | null {
 }
 
 /**
- * Fetch disclosures live from public Google Sheet (GViz JSON API endpoint)
+ * Fetch disclosures live from public Google Sheet and hydrate DEFAULT_DISCLOSURES config
  */
 export async function getDisclosuresFromSheet(sheetUrlOrId?: string): Promise<DisclosureItem[]> {
   const envVal = import.meta.env.PUBLIC_GOOGLE_SHEET_URL || import.meta.env.PUBLIC_GOOGLE_SHEET_ID || DEFAULT_SHEET_URL;
   const targetSheetId = extractSheetId(sheetUrlOrId || envVal);
 
+  // Deep clone DEFAULT_DISCLOSURES configuration base
+  const hydrated: DisclosureItem[] = JSON.parse(JSON.stringify(DEFAULT_DISCLOSURES));
+
   if (!targetSheetId) {
-    return DEFAULT_DISCLOSURES;
+    return hydrated;
   }
 
   try {
@@ -182,26 +185,47 @@ export async function getDisclosuresFromSheet(sheetUrlOrId?: string): Promise<Di
     const parsed = JSON.parse(jsonString);
 
     const rows = parsed.table?.rows || [];
-    if (!rows || rows.length === 0) return DEFAULT_DISCLOSURES;
+    if (!rows || rows.length === 0) return hydrated;
 
-    const items: DisclosureItem[] = rows.map((row: any, index: number) => {
+    rows.forEach((row: any, index: number) => {
       const c = row.c || [];
       const id = c[0]?.v ? Number(c[0].v) : index + 1;
-      const title = c[1]?.v ? String(c[1].v) : `Document ${id}`;
+      const title = c[1]?.v ? String(c[1].v) : null;
       const pdfLink = formatDriveLink(c[2]?.v ? String(c[2].v) : null);
       const videoLink = formatDriveLink(c[3]?.v ? String(c[3].v) : null);
 
-      const action: DisclosureAction[] = [{ type: "pdf", link: pdfLink }];
-      if (c[3] !== undefined || videoLink !== null) {
-        action.push({ type: "video", link: videoLink });
+      // Find matching item in DEFAULT_DISCLOSURES config by ID or index
+      let targetItem = hydrated.find((item) => item.id === id);
+      if (!targetItem && index < hydrated.length) {
+        targetItem = hydrated[index];
       }
 
-      return { id, title, action };
+      if (targetItem) {
+        // Hydrate title if non-empty custom title provided in sheet
+        if (title && title.trim()) {
+          targetItem.title = title.trim();
+        }
+
+        // Hydrate PDF action link
+        const pdfAction = targetItem.action.find((a) => a.type === "pdf");
+        if (pdfAction) {
+          pdfAction.link = pdfLink;
+        }
+
+        // Hydrate Video action link
+        const videoAction = targetItem.action.find((a) => a.type === "video");
+        if (videoAction) {
+          videoAction.link = videoLink;
+        } else if (videoLink !== null) {
+          // If video link exists in sheet for an item without default video action, add it
+          targetItem.action.push({ type: "video", link: videoLink });
+        }
+      }
     });
 
-    return items.length > 0 ? items : DEFAULT_DISCLOSURES;
+    return hydrated;
   } catch (err) {
     console.warn("Failed to fetch disclosures from Google Sheet, using defaults:", err);
-    return DEFAULT_DISCLOSURES;
+    return hydrated;
   }
 }
