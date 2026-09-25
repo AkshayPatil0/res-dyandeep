@@ -1,159 +1,95 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getDisclosuresFromSheet } from "../utils/disclosures";
 
-const disclosures: Array<{
-  id: number;
-  title: string;
-  action: Array<{ type: string; link: string | null }>;
-}> = [
-  {
-    id: 1,
-    title: "TRUST REGISTRATION",
-    action: [{ type: "pdf", link: "test" }],
-  },
-  { id: 2, title: "NOC", action: [{ type: "pdf", link: "test" }] },
-  {
-    id: 3,
-    title: "RECOGNITION CERTIFICATE",
-    action: [{ type: "pdf", link: "test" }],
-  },
-  {
-    id: 4,
-    title: "BUILDING SAFETY CERTIFICATE",
-    action: [{ type: "pdf", link: "test" }],
-  },
-  {
-    id: 5,
-    title: "FIRE SAFETY CERTIFICATE",
-    action: [{ type: "pdf", link: "test" }],
-  },
-  {
-    id: 6,
-    title: "WATER HEALTH & SANITARY CERTIFICATE",
-    action: [{ type: "pdf", link: "test" }],
-  },
-  {
-    id: 7,
-    title: "FEE STRUCTURE OF THE SCHOOL",
-    action: [{ type: "pdf", link: null }],
-  },
-  {
-    id: 8,
-    title: "ANNUAL ACADEMIC CALENDAR",
-    action: [{ type: "pdf", link: null }],
-  },
-  { id: 9, title: "SMC", action: [{ type: "pdf", link: null }] },
-  { id: 10, title: "PTA", action: [{ type: "pdf", link: null }] },
-  { id: 11, title: "RTE", action: [{ type: "pdf", link: null }] },
-  { id: 12, title: "TEACHING STAFF", action: [{ type: "pdf", link: null }] },
-  {
-    id: 13,
-    title: "CERTIFICATE OF LAND",
-    action: [{ type: "pdf", link: null }],
-  },
-  { id: 14, title: "SELF CERTIFICATE", action: [{ type: "pdf", link: null }] },
-  {
-    id: 15,
-    title: "LIBRARY",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-  {
-    id: 16,
-    title: "SCHOOL COMPOUND",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-  {
-    id: 17,
-    title: "CSWN – BO",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-  {
-    id: 18,
-    title: "SCIENCE LAB",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-  {
-    id: 19,
-    title: "SCHOOL ENTRY VIEW & CLASS ROOMS",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-  {
-    id: 20,
-    title: "COMPUTER LAB",
-    action: [
-      { type: "pdf", link: null },
-      { type: "video", link: null },
-    ],
-  },
-];
+// Fetch disclosures directly from Google Sheet (or environment URL/ID)
+const disclosures = await getDisclosuresFromSheet();
 
 const getActionText = (action: { type: string; link: string | null }) => {
-  if (action.link === null) {
+  if (!action.link) {
     return action.type === "video"
-      ? "Video not Available"
-      : "Document not Available";
+      ? "Video Not Available"
+      : "Document Not Available";
   }
-  return action.type === "pdf" ? "Download PDF" : "Watch Video";
-};
-
-const getActionTextSm = (action: { type: string; link: string | null }) => {
-  return action.type === "pdf" ? "PDF" : "Video";
+  return action.type === "pdf" ? "View / Download PDF" : "Watch Video";
 };
 ---
 
-<Layout>
+<Layout title="CBSE Mandatory Disclosures | Dyandeep School">
   <!-- CBSE Mandatory Disclosures Section -->
-  <section id="cbse-disclosures" class="py-16 bg-blue-50">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
-        CBSE Mandatory Disclosures
-      </h2>
+  <section id="cbse-disclosures" class="py-12 md:py-16 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-4 md:px-6">
+      
+      <!-- Header Banner -->
+      <div class="max-w-4xl mx-auto text-center mb-10">
+        <span class="inline-block px-3.5 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full uppercase tracking-wider mb-3">
+          Compliance & Transparency
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+          CBSE Mandatory Disclosures
+        </h1>
+        <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto">
+          Official statutory disclosures, affiliation documents, infrastructure certificates, and safety audit reports as required by CBSE guidelines.
+        </p>
+      </div>
 
-      <div class="">
-        <!-- Table Rows -->
-        <div class="flex flex-col gap-2 max-w-4xl mx-auto">
-          {
-            disclosures.map((item) => (
-              <div class="grid grid-cols-[24px_minmax(0,_1fr)_96px] md:grid-cols-[24px_repeat(2,_minmax(0,_1fr))] gap-4 p-4 md:py-6 md:px-8 hover:bg-gray-50 transition duration-200 bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="col-span-1 text-gray-800">{item.id}.</div>
-                <div class="col-span-1 text-gray-800">{item.title}</div>
-                <div class="col-span-1">
-                  {item.action.map((action, index) => (
-                    <span
-                      class={`${
-                        action.link === null
-                          ? "text-gray-500"
-                          : "text-blue-600 underline-offset-2 hover:underline font-medium cursor-pointer"
+      <!-- Disclosures List -->
+      <div id="disclosures-list" class="max-w-4xl mx-auto space-y-3">
+        {
+          disclosures.map((item) => (
+            <div
+              class="bg-white rounded-xl shadow-xs border border-slate-200 p-4 md:py-5 md:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-blue-300 transition duration-200"
+            >
+              
+              <!-- Left: ID & Title -->
+              <div class="flex items-start md:items-center gap-3">
+                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 text-blue-700 font-bold text-sm flex items-center justify-center border border-blue-100">
+                  {item.id}
+                </span>
+                <h3 class="font-semibold text-slate-800 text-base md:text-lg leading-snug">
+                  {item.title}
+                </h3>
+              </div>
+
+              <!-- Right: Actions -->
+              <div class="flex items-center gap-2 flex-wrap self-end md:self-center">
+                {item.action.map((action) => (
+                  action.link ? (
+                    <a
+                      href={action.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 ${
+                        action.type === 'pdf'
+                          ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
+                          : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
                       }`}
                     >
-                      {index > 0 ? " | " : ""}
-                      <span class="hidden md:inline">
-                        {getActionText(action)}
-                      </span>
-                      <span class="md:hidden">{getActionTextSm(action)}</span>
+                      {action.type === 'pdf' ? (
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      ) : (
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      )}
+                      <span>{getActionText(action)}</span>
+                    </a>
+                  ) : (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                      {getActionText(action)}
                     </span>
-                  ))}
-                </div>
+                  )
+                ))}
               </div>
-            ))
-          }
-        </div>
+
+            </div>
+          ))
+        }
       </div>
+
     </div>
   </section>
 </Layout>
