@@ -3,191 +3,293 @@ import Layout from "../layouts/Layout.astro";
 
 const values = [
   {
-    title: "Excellence",
+    title: "Academic Excellence",
+    icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
     description:
-      "Striving for the highest standards in all academic and extracurricular endeavors.",
+      "Upholding rigorous learning standards and fostering curiosity, critical thinking, and scholarly achievement.",
   },
   {
-    title: "Integrity",
+    title: "Moral Integrity",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
     description:
-      "Upholding honesty, respect, and ethical conduct in all interactions.",
+      "Instilling honesty, humility, respect, and sound ethical principles in every student from their formative years.",
   },
   {
-    title: "Innovation",
+    title: "Innovation & Inquiry",
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
     description:
-      "Fostering creativity, critical thinking, and embracing new ideas for problem-solving.",
+      "Encouraging students to question, innovate, problem-solve, and embrace scientific curiosity and technological literacy.",
   },
   {
-    title: "Community",
+    title: "Holistic Development",
+    icon: "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
     description:
-      "Building a supportive, inclusive, and collaborative environment for all.",
+      "Balancing intellectual growth with sports, performing arts, physical health, and emotional well-being.",
   },
   {
-    title: "Responsibility",
-    description: "Encouraging accountability, empathy, and global citizenship.",
+    title: "Inclusive Community",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    description:
+      "Cultivating an empathetic, respectful, and supportive rural-urban learning ecosystem welcoming every child.",
+  },
+  {
+    title: "Responsible Citizenship",
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    description:
+      "Preparing disciplined, socially aware students dedicated to the progress of the nation and the global society.",
+  },
+];
+
+const campusFeatures = [
+  {
+    title: "Modern Classrooms",
+    description:
+      "Well-ventilated, spacious, and ergonomically designed learning spaces tailored for interactive learning.",
+    badge: "Infrastructure",
+  },
+  {
+    title: "CBSE Curriculum Framework",
+    description:
+      "Comprehensive syllabus fostering foundational literacy, numeracy, advanced STEM, and humanities.",
+    badge: "Academics",
+  },
+  {
+    title: "Science & Innovation Labs",
+    description:
+      "Equipped facilities for practical experiments and experiential discovery in Physics, Chemistry, and Biology.",
+    badge: "Hands-on Learning",
+  },
+  {
+    title: "Sports & Physical Fitness",
+    description:
+      "Dedicated open play areas and coaching for athletics, cricket, volleyball, and traditional regional sports.",
+    badge: "Athletics",
+  },
+  {
+    title: "Library & Resource Center",
+    description:
+      "A rich repository of books, periodicals, reference texts, and digital reading resources for all grade levels.",
+    badge: "Knowledge Hub",
+  },
+  {
+    title: "Dedicated Rural Focus",
+    description:
+      "Conveniently situated on Ainapur Road near Mangasuli Bus Stand to serve surrounding villages and towns.",
+    badge: "Accessibility",
   },
 ];
 ---
 
 <Layout>
-  <!-- About Us Section -->
-  <section id="about" class="py-16 bg-blue-50">
+  <!-- Hero / Header Banner -->
+  <section class="relative bg-gradient-to-br from-blue-900 via-primary to-indigo-900 text-white py-16 lg:py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>Radhanand Education Society's</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+        About Dnyandeep Vidyalaya
+      </h1>
+      <p class="text-base md:text-xl text-blue-100 leading-relaxed font-light">
+        Nurturing young minds, instilling enduring values, and building educational pathways for a brighter tomorrow in Mangsuli and surrounding regions.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section featuring the proposed campus building -->
+  <section id="about" class="py-16 lg:py-20 bg-white">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
-        About Our School
-      </h2>
-      <div
-        class="flex flex-col md:flex-row items-center justify-center md:space-x-12"
-      >
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <img
-            src="https://placehold.co/600x400/E0E0E0/333333?text=School+Campus"
-            alt="School Campus"
-            class="rounded-lg shadow-xl w-full h-auto"
-          />
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+        
+        <!-- Left: Campus Building Image Card -->
+        <div class="lg:w-1/2 w-full">
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group">
+            <img
+              src="/images/school-campus-building.png"
+              alt="Dnyandeep Vidyalaya Campus Building - Mangsuli"
+              class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
         </div>
-        <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
-          <p class="mb-4">
-            Your School Name is dedicated to providing a holistic educational
-            experience that fosters academic excellence, personal growth, and
-            social responsibility. Established in [Year], we have been a beacon
-            of learning, guiding students to reach their full potential.
+
+        <!-- Right: Narrative Description with Proper Name -->
+        <div class="lg:w-1/2 w-full text-gray-700 leading-relaxed space-y-5">
+          <div class="inline-block">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              Our Heritage & Vision
+            </span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            Empowering Rural Students with High-Quality Education
+          </h2>
+
+          <p class="text-base text-gray-700 leading-relaxed">
+            <strong class="text-primary font-semibold">Dnyandeep Vidyalaya, Mangsuli</strong>, run under the visionary patronage of <strong class="text-gray-900 font-semibold">Radhanand Education Society</strong> and the leadership of <strong class="text-gray-900 font-semibold">Shri Dr. Yuvraj Patil</strong>, is committed to delivering holistic, value-based education in the Kagwad taluka and Belagavi district of Karnataka.
           </p>
-          <p class="mb-4">
-            Our mission is to create a dynamic and supportive learning
-            environment where students are encouraged to explore, innovate, and
-            develop a lifelong love for learning. We believe in nurturing
-            critical thinking, creativity, and strong ethical values.
+
+          <p class="text-base text-gray-700 leading-relaxed">
+            Our mission is to ensure that children in rural and semi-urban communities receive schooling on par with premier urban institutions. By combining the comprehensive CBSE curriculum framework with state-of-the-art facilities, we foster an atmosphere where students are encouraged to explore, innovate, and develop a lifelong love for learning.
           </p>
-          <p>
-            With a team of highly qualified and passionate educators,
-            state-of-the-art facilities, and a comprehensive curriculum, we
-            prepare our students to thrive in a rapidly changing world.
+
+          <p class="text-base text-gray-700 leading-relaxed">
+            Guided by dedicated educators and rooted in Indian values, Dnyandeep Vidyalaya prepares students to excel academically, face modern challenges with confidence, and emerge as responsible leaders of our society.
+          </p>
+
+          <!-- Quick Highlights Pills -->
+          <div class="pt-2 grid grid-cols-2 gap-3 text-xs font-medium text-gray-800">
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-blue-50/70 border border-blue-100">
+              <svg class="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>CBSE Pattern Curriculum</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-blue-50/70 border border-blue-100">
+              <svg class="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Visionary Leadership</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-blue-50/70 border border-blue-100">
+              <svg class="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Holistic Child Growth</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-blue-50/70 border border-blue-100">
+              <svg class="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Prime Highway Access</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Visionary Founder & Management Spotlight -->
+  <section class="py-14 bg-gradient-to-r from-blue-50 via-slate-50 to-indigo-50 border-y border-blue-100/60">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-blue-100 flex flex-col md:flex-row items-center gap-8">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-blue-700 text-white flex items-center justify-center shrink-0 shadow-lg ring-4 ring-blue-100">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <div class="space-y-2 text-center md:text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Founding Patron & Inspiration</span>
+          <h3 class="text-2xl font-bold text-gray-900">
+            Shri Dr. Yuvraj Patil
+          </h3>
+          <p class="text-sm font-medium text-blue-700">
+            Radhanand Education Society, Mangsuli
+          </p>
+          <p class="text-gray-600 text-sm leading-relaxed pt-1">
+            “Our vision is to provide every student in rural Karnataka with modern, accessible, and character-building education. Dnyandeep Vidyalaya stands as a testament to our steadfast belief that with quality mentorship and infrastructure, every child can achieve extraordinary success.”
           </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Campus Facilities Section -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
-        Our Core Values
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        {
-          values.map((value) => (
-            <div class="bg-blue-50 px-6 py-12 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-              <h4 class="text-2xl font-semibold text-primary mb-4 text-center">
-                {value.title}
-              </h4>
-              <p class="text-gray-700 text-center">{value.description}</p>
-            </div>
-          ))
-        }
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Campus Infrastructure
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+          Facilities Designed for Modern Learning
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base">
+          Our school is structured to provide an enriching academic, athletic, and cultural environment for students across all developmental stages.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {campusFeatures.map((feat) => (
+          <div class="bg-slate-50 hover:bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-300 group">
+            <span class="inline-block text-[11px] font-semibold text-blue-700 bg-blue-100/70 px-2.5 py-0.5 rounded-md mb-3">
+              {feat.badge}
+            </span>
+            <h4 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+              {feat.title}
+            </h4>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {feat.description}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
-  <section id="gallery" class="py-16 bg-blue-50">
+  <!-- Core Values Section -->
+  <section class="py-16 bg-blue-50/60 border-t border-blue-100">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
-        Our School Gallery
-      </h2>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-      >
-        <!-- Gallery Item 1 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-        >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Event+1"
-            alt="School Event 1"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Annual Sports Day</p>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-700 mb-3">
+          Our Core Values
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base">
+          Guiding principles that define our educational philosophy and daily student life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {values.map((value) => (
+          <div class="bg-white p-7 rounded-xl shadow-md hover:shadow-xl border border-blue-100/80 transition-all duration-300 transform hover:-translate-y-1">
+            <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={value.icon} />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-primary mb-2">
+              {value.title}
+            </h4>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {value.description}
+            </p>
           </div>
-        </div>
-        <!-- Gallery Item 2 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section class="py-14 bg-gradient-to-r from-blue-700 to-primary text-white text-center">
+    <div class="container mx-auto px-6 max-w-3xl space-y-5">
+      <h3 class="text-2xl md:text-3xl font-bold">
+        Join the Dnyandeep Vidyalaya Family
+      </h3>
+      <p class="text-blue-100 text-sm md:text-base leading-relaxed">
+        Admissions are open for the upcoming academic session. Connect with us to explore admissions, schedule a campus visit, or learn more about our curriculum.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a
+          href="/contact"
+          class="bg-white text-primary hover:bg-yellow-400 hover:text-gray-900 font-bold px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 text-sm"
         >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Classroom"
-            alt="Classroom"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Modern Classrooms</p>
-          </div>
-        </div>
-        <!-- Gallery Item 3 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
+          Contact Admissions
+        </a>
+        <a
+          href="https://maps.app.goo.gl/bJq4db8NSZeWBS7r8?g_st=aw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-transparent border border-white hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 text-sm inline-flex items-center gap-2"
         >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Lab"
-            alt="Science Lab"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Science Laboratory</p>
-          </div>
-        </div>
-        <!-- Gallery Item 4 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-        >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Library"
-            alt="Library"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Well-Stocked Library</p>
-          </div>
-        </div>
-        <!-- Gallery Item 5 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-        >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Playground"
-            alt="Playground"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Spacious Playground</p>
-          </div>
-        </div>
-        <!-- Gallery Item 6 -->
-        <div
-          class="relative group rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-        >
-          <img
-            src="https://placehold.co/400x300/C0C0C0/333333?text=Students"
-            alt="Students"
-            class="w-full h-48 object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <p class="text-white text-lg font-semibold">Engaged Students</p>
-          </div>
-        </div>
+          <span>Find Campus on Map</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>

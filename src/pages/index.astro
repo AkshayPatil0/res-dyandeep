@@ -1,8 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const academicPrograms = [
+  {
+    grade: "Primary Education (Grades 1-5)",
+    tag: "Foundational Years",
+    description:
+      "Focusing on foundational literacy, numeracy, environmental studies, and creative expression. We cultivate curiosity and joy of learning through child-centric, interactive teaching methods.",
+    features: ["Activity-based learning", "Language & arithmetic skills", "Creative arts & sports"],
+    link: "/about",
+  },
+  {
+    grade: "Middle School (Grades 6-8)",
+    tag: "Developmental Years",
+    description:
+      "Emphasizing critical thinking, analytical problem-solving, and scientific inquiry. Students are introduced to specialized subjects, lab experiments, and collaborative group projects.",
+    features: ["Science & Math exploration", "Digital & computer skills", "Leadership & co-curriculars"],
+    link: "/about",
+  },
+  {
+    grade: "High School (Grades 9-10)",
+    tag: "Secondary Years",
+    description:
+      "A rigorous curriculum designed to prepare students for academic excellence, board examinations, and higher secondary pathways through personalized mentoring and career guidance.",
+    features: ["CBSE-aligned syllabus", "Comprehensive exam readiness", "Ethical & career mentoring"],
+    link: "/about",
+  },
+];
+
+const highlights = [
+  {
+    icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z",
+    title: "CBSE Curriculum",
+    description: "Robust academic framework ensuring national educational standards.",
+  },
+  {
+    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    title: "Modern Infrastructure",
+    description: "Purpose-built classrooms, science laboratories, and open play areas.",
+  },
+  {
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    title: "Visionary Leadership",
+    description: "Guided by Shri Dr. Yuvraj Patil and Radhanand Education Society.",
+  },
+  {
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+    title: "Prime Location",
+    description: "Conveniently situated on Ainapur Road, near Mangasuli Bus Stand.",
+  },
+];
 ---
 
 <Layout>
@@ -10,129 +57,281 @@ import Layout from "../layouts/Layout.astro";
   <section
     id="home"
     style="background-image: url('/images/hero1.jpeg');"
-    class="bg-cover bg-center bg-no-repeat relative h-screen flex items-center justify-center text-white text-center pt-16"
+    class="bg-cover bg-center bg-no-repeat relative min-h-[90vh] flex items-center justify-center text-white text-center py-24 px-6"
   >
-    <div class="absolute inset-0 bg-black opacity-60"></div>
-    <div class="relative z-10 px-6">
-      <h1
-        class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up"
-      >
-        Nurturing Minds, Building Futures
+    <div class="absolute inset-0 bg-slate-950/70"></div>
+    <div class="relative z-10 max-w-4xl mx-auto space-y-6">
+      
+      <!-- Trust Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-yellow-300 text-xs md:text-sm font-semibold tracking-wide uppercase">
+        <span>Radhanand Education Society's</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-white drop-shadow-md">
+        Dyandeep Vidyalaya, Mangsuli
       </h1>
-      <p
-        class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200"
-      >
-        Empowering students with knowledge, skills, and values for a brighter
-        tomorrow.
+
+      <p class="text-xl md:text-2xl font-light text-blue-100 max-w-2xl mx-auto drop-shadow">
+        Nurturing Minds, Building Futures
       </p>
-      <a
-        href="#admissions"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-fade-in-up delay-400"
-      >
-        Admissions Open!
-      </a>
+
+      <p class="text-sm md:text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
+        Committed to providing high-quality, value-based CBSE education under the visionary guidance of <strong class="text-white font-semibold">Shri Dr. Yuvraj Patil</strong>. Empowering students in Mangsuli, Taluka Kagwad, and Belagavi district.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a
+          href="#admissions"
+          class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-blue-900/50 transition duration-300 transform hover:scale-105 text-sm md:text-base"
+        >
+          Admissions Open
+        </a>
+        <a
+          href="/about"
+          class="bg-white/15 hover:bg-white/25 text-white border border-white/40 font-semibold py-3.5 px-8 rounded-full backdrop-blur-sm transition duration-300 transform hover:scale-105 text-sm md:text-base"
+        >
+          About Our School
+        </a>
+        <a
+          href="/contact"
+          class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-3.5 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-sm md:text-base"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Bar -->
+  <section class="py-10 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {highlights.map((item) => (
+          <div class="flex items-start space-x-3.5 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:shadow-sm transition duration-200">
+            <div class="w-10 h-10 rounded-lg bg-blue-100/80 text-primary flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon} />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 text-sm mb-0.5">{item.title}</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Preview Section -->
+  <section class="py-16 bg-gradient-to-b from-white to-blue-50/40">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+        
+        <!-- Campus Image Card -->
+        <div class="lg:w-1/2 w-full">
+          <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-200 group">
+            <img
+              src="/images/school-campus-building.png"
+              alt="Dyandeep Vidyalaya Campus Building - Mangsuli"
+              class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+            />
+          </div>
+        </div>
+
+        <!-- Narrative Highlights -->
+        <div class="lg:w-1/2 w-full space-y-5">
+          <div class="inline-block">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              Welcome to Our School
+            </span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            A Modern Educational Haven in Mangsuli
+          </h2>
+
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            Established under the guidance of <strong class="text-gray-900">Shri Dr. Yuvraj Patil</strong> and managed by <strong class="text-gray-900">Radhanand Education Society</strong>, Dyandeep Vidyalaya is dedicated to bringing quality schooling to students in rural Karnataka.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            We provide a disciplined yet nurturing environment where academic rigor meets extracurricular growth, character development, and modern sports facilities.
+          </p>
+
+          <div class="space-y-2.5 pt-1 text-sm text-gray-700">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>CBSE Curriculum Pattern focusing on holistic development</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Spacious classrooms, science laboratories, and sports grounds</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Conveniently located near Mangsuli Bus Stand on Ainapur Road</span>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a
+              href="/about"
+              class="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-bold text-sm md:text-base transition duration-200 group"
+            >
+              <span>Learn more about our school &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <!-- Academics Section -->
-  <section id="academics" class="py-16 bg-blue-50">
+  <section id="academics" class="py-16 bg-blue-50/70 border-t border-blue-100">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">
-        Our Academic Programs
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Program Card 1 -->
-        <div
-          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
-        >
-          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
-            Primary Education (Grades 1-5)
-          </h3>
-          <p class="text-gray-700 mb-4">
-            Our primary curriculum focuses on foundational literacy, numeracy,
-            and environmental studies, fostering curiosity and a love for
-            learning through interactive methods.
-          </p>
-          <a href="#" class="text-blue-500 hover:underline font-medium"
-            >Learn More &rarr;</a
-          >
-        </div>
-        <!-- Program Card 2 -->
-        <div
-          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
-        >
-          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
-            Middle School (Grades 6-8)
-          </h3>
-          <p class="text-gray-700 mb-4">
-            We emphasize critical thinking and problem-solving skills,
-            introducing specialized subjects and encouraging independent
-            learning.
-          </p>
-          <a href="#" class="text-blue-500 hover:underline font-medium"
-            >Learn More &rarr;</a
-          >
-        </div>
-        <!-- Program Card 3 -->
-        <div
-          class="bg-white rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300"
-        >
-          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
-            High School (Grades 9-12)
-          </h3>
-          <p class="text-gray-700 mb-4">
-            A rigorous curriculum prepares students for higher education,
-            offering diverse subjects and career guidance.
-          </p>
-          <a href="#" class="text-blue-500 hover:underline font-medium"
-            >Learn More &rarr;</a
-          >
-        </div>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-white px-3 py-1 rounded-full border border-blue-200">
+          Academic Excellence
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-700 mt-3 mb-4">
+          Our Academic Programs
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base">
+          Structured learning pathways crafted to inspire curiosity, foster discipline, and prepare students for future success.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {academicPrograms.map((prog) => (
+          <div class="bg-white rounded-xl shadow-md hover:shadow-xl p-8 border border-blue-100/80 transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
+            <div>
+              <span class="inline-block text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full mb-3">
+                {prog.tag}
+              </span>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                {prog.grade}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                {prog.description}
+              </p>
+              <ul class="space-y-2 mb-6 border-t border-gray-100 pt-4 text-xs text-gray-700">
+                {prog.features.map((feat) => (
+                  <li class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <a
+                href={prog.link}
+                class="text-blue-600 hover:text-blue-800 text-sm font-semibold inline-flex items-center gap-1 group"
+              >
+                <span>Program Details</span>
+                <span class="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Admissions Section -->
   <section id="admissions" class="py-16 bg-white">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-blue-700 mb-8">Admissions</h2>
-      <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-        Discover the path to joining our vibrant learning community. We welcome
-        students who are eager to learn, grow, and contribute positively.
-      </p>
-      <div
-        class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8"
-      >
-        <div class="bg-blue-100 p-8 rounded-lg shadow-md w-full md:w-1/3">
-          <h3 class="text-2xl font-semibold text-blue-600 mb-4">
-            Admission Process
-          </h3>
-          <p class="text-gray-700 mb-6">
-            Learn about our step-by-step admission procedure, including
-            eligibility criteria and required documents.
-          </p>
+    <div class="container mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Enrollment
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-700 mt-3 mb-4">
+          Admissions Open for 2026-27
+        </h2>
+        <p class="text-gray-600 text-sm md:text-base">
+          Join our learning community in Mangsuli. We welcome students and families seeking holistic education, strong values, and a supportive campus.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        
+        <!-- Card 1: Admission Enquiry -->
+        <div class="bg-blue-50/70 p-8 rounded-2xl shadow-sm border border-blue-100 flex flex-col justify-between hover:shadow-md transition duration-200">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Admission Guidelines
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Learn about grade eligibility, the documentation process (birth certificate, TC, Aadhaar), and schedule an interaction with our faculty.
+            </p>
+          </div>
           <a
-            href="#"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+            href="/contact"
+            class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition duration-200 text-sm shadow-md shadow-blue-900/20"
           >
-            View Process
+            Enquire for Admission
           </a>
         </div>
-        <div class="bg-green-100 p-8 rounded-lg shadow-md w-full md:w-1/3">
-          <h3 class="text-2xl font-semibold text-green-600 mb-4">
-            Apply Online
-          </h3>
-          <p class="text-gray-700 mb-6">
-            Start your application today through our secure online portal. It's
-            quick, easy, and convenient.
-          </p>
+
+        <!-- Card 2: Campus Visit -->
+        <div class="bg-emerald-50/70 p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between hover:shadow-md transition duration-200">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Visit Our Campus
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Parents and guardians are warmly invited to tour our classrooms, meet our teaching team, and experience the learning atmosphere in Mangsuli.
+            </p>
+          </div>
           <a
-            href="#"
-            class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+            href="https://maps.app.goo.gl/bJq4db8NSZeWBS7r8?g_st=aw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition duration-200 text-sm shadow-md shadow-emerald-900/20 inline-flex items-center justify-center gap-1.5"
           >
-            Apply Now
+            <span>Get Directions ↗</span>
           </a>
         </div>
+
+        <!-- Card 3: CBSE Disclosures -->
+        <div class="bg-amber-50/70 p-8 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between hover:shadow-md transition duration-200">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              Mandatory Disclosures
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Review all regulatory affiliation documentation, infrastructure certificates, school management details, and statutory disclosures.
+            </p>
+          </div>
+          <a
+            href="/cbse-disclosures"
+            class="w-full text-center bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-xl transition duration-200 text-sm shadow-md shadow-amber-900/20"
+          >
+            View Disclosures
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
