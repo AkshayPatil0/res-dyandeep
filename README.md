@@ -1,4 +1,4 @@
-# DyanDeep School
+# RES DyanDeep School
 
 ```sh
 npm create astro@latest -- --template basics
