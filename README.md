@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# DyanDeep School
 
 ```sh
 npm create astro@latest -- --template basics
