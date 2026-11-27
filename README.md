@@ -1,4 +1,4 @@
-# RES DyanDeep School
+# Dnyandeep Vidyalaya Mangasuli
 
 ```sh
 npm create astro@latest -- --template basics
